@@ -8,7 +8,9 @@ export default function ThemeToggle() {
       (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     const next = current === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
-    document.cookie = `theme=${next}; path=/; max-age=31536000; samesite=lax`;
+    try {
+      localStorage.setItem("theme", next);
+    } catch { }
   }
 
   return (
