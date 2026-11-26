@@ -1,31 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f8f9ff;
-  --card: #ffffff;
-  --ink: #171c23;
-  --mute: #59413c;
-  --line: #e4e8f2;
-  --pri: #a93017;
-  --onpri: #ffffff;
-  --ok: #2c694e;
-  --okbg: #aeeecb;
-  --okink: #0e3f2b;
+  --bg: #f1e2c0;
+  --card: #fbf1da;
+  --ink: #2b1d12;
+  --mute: #6b5238;
+  --line: #c9ad7c;
+  --pri: #b3261e;
+  --onpri: #fff8ec;
+  --sea: #1f5f8b;
+  --gold: #d9a21b;
+  --ok: #2f6b3a;
+  --okbg: #d6e8c4;
+  --okink: #16391d;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #12151b;
-    --card: #1b2029;
-    --ink: #eef1f7;
-    --mute: #bfb0aa;
-    --line: #2b3240;
-    --pri: #ff8a73;
-    --onpri: #3d0600;
-    --ok: #95d4b3;
-    --okbg: #17382a;
-    --okink: #c4f2dc;
+  :root:not([data-theme="light"]) {
+    --bg: #0d1b2a;
+    --card: #14283d;
+    --ink: #f3e9d2;
+    --mute: #b9a98a;
+    --line: #2c4660;
+    --pri: #ff7a6b;
+    --onpri: #2a0a06;
+    --sea: #6fb3e0;
+    --gold: #f2c14e;
+    --ok: #8fd19e;
+    --okbg: #17402a;
+    --okink: #d3f2da;
+    color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1b2a;
+  --card: #14283d;
+  --ink: #f3e9d2;
+  --mute: #b9a98a;
+  --line: #2c4660;
+  --pri: #ff7a6b;
+  --onpri: #2a0a06;
+  --sea: #6fb3e0;
+  --gold: #f2c14e;
+  --ok: #8fd19e;
+  --okbg: #17402a;
+  --okink: #d3f2da;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -36,9 +57,53 @@
   --color-line: var(--line);
   --color-pri: var(--pri);
   --color-onpri: var(--onpri);
+  --color-sea: var(--sea);
+  --color-gold: var(--gold);
   --color-ok: var(--ok);
   --color-okbg: var(--okbg);
   --color-okink: var(--okink);
-  --font-display: var(--font-epilogue);
+  --font-display: var(--font-pirata);
   --font-sans: var(--font-jakarta);
+}
+
+.poster {
+  background:
+    radial-gradient(ellipse at 20% 10%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 55%),
+    radial-gradient(ellipse at 85% 90%, color-mix(in srgb, var(--line) 35%, transparent), transparent 50%),
+    var(--card);
+  border: 3px double var(--line);
+  border-radius: 4px;
+  box-shadow: 0 3px 0 var(--line), 0 10px 24px -12px rgb(0 0 0 / 0.35);
+}
+
+.rope {
+  height: 6px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(135deg, var(--line) 0 6px, transparent 6px 10px);
+}
+
+.route {
+  border-left: 4px dotted var(--line);
+}
+
+.to-light {
+  display: none;
+}
+
+:root[data-theme="dark"] .to-light {
+  display: inline;
+}
+
+:root[data-theme="dark"] .to-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .to-light {
+    display: inline;
+  }
+
+  :root:not([data-theme="light"]) .to-dark {
+    display: none;
+  }
 }
